@@ -7,7 +7,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173") // Porta del frontend Vue
+        policy.WithOrigins("http://localhost:5173","http://localhost:7771") // Porta del frontend Vue
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials(); // Se necessario per autenticazione
