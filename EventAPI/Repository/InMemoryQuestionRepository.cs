@@ -12,7 +12,7 @@ namespace EventAPI.Repositories
             {
                 SessionId = 1,
                 QuestionText = "Quale parola rappresenta meglio la Sessione 1?",
-                Terms = new List<string> { "Innovazione", "Collaborazione", "Creatività", "Ispirazione", "Flessibilità", "Cambiamento", "Coinvolgimento", "Efficienza", "Qualità", "Eccellenza" }
+                Terms = new List<string> { "Innovazione 1", "Collaborazione", "Creatività", "Ispirazione", "Flessibilità", "Cambiamento", "Coinvolgimento", "Efficienza", "Qualità", "Eccellenza" }
             },
             new Question
             {
@@ -24,7 +24,7 @@ namespace EventAPI.Repositories
             {
                 SessionId = 3,
                 QuestionText = "Quale parola rappresenta meglio la Sessione 3?",
-                Terms = new List<string> { "Innovazione", "Collaborazione", "Creatività", "Ispirazione", "Flessibilità", "Cambiamento", "Coinvolgimento", "Efficienza", "Qualità", "Eccellenza" }
+                Terms = new List<string> { "Innovazione 3", "Collaborazione", "Creatività", "Ispirazione", "Flessibilità", "Cambiamento", "Coinvolgimento", "Efficienza", "Qualità", "Eccellenza" }
             }
         };
 

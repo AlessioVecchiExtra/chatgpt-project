@@ -3,7 +3,7 @@
     <p>Scegli la parola che rappresenta meglio questa sessione:</p>
     <div>
       <button
-        v-for="wordOption in wordOptions"
+        v-for="wordOption in terms"
         :key="wordOption"
         @click="selectWord(wordOption)"
       >
@@ -23,6 +23,10 @@ export default defineComponent({
     sessionId: {
       type: String,
       required: true
+    },
+    terms: {
+      type: Array,
+      default: () => []
     }
   },
   setup(props) {
@@ -33,11 +37,7 @@ export default defineComponent({
     }
 
     return {
-      selectWord,
-      wordOptions: [
-        'Innovazione', 'Collaborazione', 'Creatività', 'Ispirazione', 'Flessibilità',
-        'Cambiamento', 'Coinvolgimento', 'Efficienza', 'Qualità', 'Eccellenza'
-      ]
+      selectWord
     }
   }
 })
