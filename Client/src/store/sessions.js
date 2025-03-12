@@ -1,55 +1,47 @@
+// src/store/sessions.js
+
 import { defineStore } from 'pinia'
-import config from '@/config.js' // Importiamo la configurazione
+import config from '@/config.js'
 
 export const useSessionsStore = defineStore('sessions', {
   state: () => ({
-    sessionsData: {
-      1: [],
-      2: [],
-      3: []
-    }
+    allVotes: []
   }),
+
   actions: {
     async addWordToSession(sessionId, word) {
-      const vote = {
-        sessionId: parseInt(sessionId),
-        word: word
-      }
-
+      const vote = { sessionId: parseInt(sessionId), word }
       try {
-        const response = await fetch(`${config.API_BASE_URL}/Votes`, {
+        await fetch(`${config.API_BASE_URL}/Votes`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(vote)
         })
-
-        if (!response.ok) {
-          throw new Error('Errore nell’invio del voto')
-        }
-
-        this.sessionsData[sessionId].push(word)
       } catch (error) {
         console.error('Errore:', error)
       }
     },
 
-    async loadVotesFromApi() {
+    async loadAllVotesFromApi() {
       try {
         const response = await fetch(`${config.API_BASE_URL}/Votes`)
         if (!response.ok) {
           throw new Error('Errore nel recupero dei voti')
         }
-
-        const data = await response.json()
-
-        this.sessionsData = { 1: [], 2: [], 3: [] }
-
-        data.forEach(vote => {
-          this.sessionsData[vote.sessionId].push(vote.word)
-        })
+        this.allVotes = await response.json()
       } catch (error) {
         console.error('Errore:', error)
       }
+    }
+  },
+
+  getters: {
+    getVotesForSession: (state) => (sessionId) => {
+      return state.allVotes.filter(v => v.sessionId === Number(sessionId))
+    },
+    getAllWords: (state) => {
+      // Ritorna solo l'array di parole (da tutti i voti)
+      return state.allVotes.map(v => v.word)
     }
   }
 })

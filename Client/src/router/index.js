@@ -16,9 +16,10 @@ const routes = [
     props: true
   },
   {
-    path: '/results',
+    path: '/results/:sessionId?',
     name: 'Results',
-    component: ResultsView
+    component: ResultsView,
+    props: true
   }
 ]
 
