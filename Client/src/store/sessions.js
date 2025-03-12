@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import config from '@/config.js' // Importiamo la configurazione
 
 export const useSessionsStore = defineStore('sessions', {
   state: () => ({
@@ -16,7 +17,7 @@ export const useSessionsStore = defineStore('sessions', {
       }
 
       try {
-        const response = await fetch('http://localhost:5184/api/Votes', {
+        const response = await fetch(`${config.API_BASE_URL}/Votes`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(vote)
@@ -26,7 +27,6 @@ export const useSessionsStore = defineStore('sessions', {
           throw new Error('Errore nell’invio del voto')
         }
 
-        // Aggiorniamo lo stato locale solo se la richiesta ha successo
         this.sessionsData[sessionId].push(word)
       } catch (error) {
         console.error('Errore:', error)
@@ -35,14 +35,13 @@ export const useSessionsStore = defineStore('sessions', {
 
     async loadVotesFromApi() {
       try {
-        const response = await fetch('http://localhost:5184/api/Votes')
+        const response = await fetch(`${config.API_BASE_URL}/Votes`)
         if (!response.ok) {
           throw new Error('Errore nel recupero dei voti')
         }
 
         const data = await response.json()
 
-        // Resetta la sessione prima di popolarla di nuovo
         this.sessionsData = { 1: [], 2: [], 3: [] }
 
         data.forEach(vote => {
