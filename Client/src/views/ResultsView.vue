@@ -1,18 +1,20 @@
 <template>
-  <div>
-    <h1>Risultati</h1>
+  <div class="container">
+    <h1 class="text-center mt-4">Risultati</h1>
 
-    <!-- Dropdown di selezione sessione -->
-    <label for="sessionSelect">Sessione:</label>
-    <select id="sessionSelect" v-model="selectedSession">
-      <option value="all">Tutte</option>
-      <option value="1">Sessione 1</option>
-      <option value="2">Sessione 2</option>
-      <option value="3">Sessione 3</option>
-    </select>
+    <div class="mb-3">
+      <label for="sessionSelect" class="form-label">Seleziona una sessione:</label>
+      <select id="sessionSelect" v-model="selectedSession" class="form-select">
+        <option value="all">Tutte</option>
+        <option value="1">Sessione 1</option>
+        <option value="2">Sessione 2</option>
+        <option value="3">Sessione 3</option>
+      </select>
+    </div>
 
-    <!-- Mostra la word cloud con le parole filtrate -->
-    <WordCloud :words="filteredWords" />
+    <div class="card p-3">
+      <WordCloud :words="filteredWords" minFontSize="20" maxFontSize="70" />
+    </div>
   </div>
 </template>
 
@@ -36,7 +38,7 @@ export default defineComponent({
     const sessionsStore = useSessionsStore()
 
     const router = useRouter();
-    
+
     const route = useRoute();
     const sessionId = route.params.id
 

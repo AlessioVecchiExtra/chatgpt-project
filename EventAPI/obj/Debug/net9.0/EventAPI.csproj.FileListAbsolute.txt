@@ -71,3 +71,4 @@ D:\dev\temp\chatgpt-project\EventAPI\obj\Debug\net9.0\refint\EventAPI.dll
 D:\dev\temp\chatgpt-project\EventAPI\obj\Debug\net9.0\EventAPI.pdb
 D:\dev\temp\chatgpt-project\EventAPI\obj\Debug\net9.0\EventAPI.genruntimeconfig.cache
 D:\dev\temp\chatgpt-project\EventAPI\obj\Debug\net9.0\ref\EventAPI.dll
+D:\dev\temp\chatgpt-project\EventAPI\bin\Debug\net9.0\Data\questions.json

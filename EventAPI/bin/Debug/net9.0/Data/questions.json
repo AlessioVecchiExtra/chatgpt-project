@@ -1,0 +1,51 @@
+[
+    {
+      "SessionId": 1,
+      "QuestionText": "Quale parola rappresenta meglio la Sessione 1?",
+      "Terms": [
+        "Innovazione",
+        "Collaborazione",
+        "Creatività",
+        "Ispirazione",
+        "Flessibilità",
+        "Cambiamento",
+        "Coinvolgimento",
+        "Efficienza",
+        "Qualità",
+        "Eccellenza"
+      ]
+    },
+    {
+      "SessionId": 2,
+      "QuestionText": "Quale parola rappresenta meglio la Sessione 2?",
+      "Terms": [
+        "Leadership",
+        "Strategia",
+        "Visione",
+        "Comunicazione",
+        "Integrità",
+        "Passione",
+        "Determinazione",
+        "Empatia",
+        "Resilienza",
+        "Trasparenza"
+      ]
+    },
+    {
+      "SessionId": 3,
+      "QuestionText": "Quale parola rappresenta meglio la Sessione 3?",
+      "Terms": [
+        "Xyz",
+        "Abc",
+        "Visione",
+        "Comunicazione",
+        "Integrità",
+        "Passione",
+        "Determinazione",
+        "Empatia",
+        "Resilienza",
+        "Trasparenza"
+      ]
+    }
+  ]
+  

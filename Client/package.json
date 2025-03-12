@@ -7,11 +7,13 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "pinia": "^2.0.33",
     "qrcode.vue": "^3.3.1",
     "vue": "^3.2.47",
-    "wordcloud": "^1.0.6",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "wordcloud": "^1.0.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",

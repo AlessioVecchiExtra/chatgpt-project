@@ -1,14 +1,15 @@
 <template>
-  <div>
-    <p>Scegli la parola che rappresenta meglio questa sessione:</p>
-    <div>
+  <div class="container">
+    <p class="lead">Scegli la parola che rappresenta meglio questa sessione:</p>
+    <div class="d-flex flex-wrap gap-2">
       <button
         v-for="wordOption in terms"
         :key="wordOption"
+        class="btn btn-outline-primary"
         @click="selectWord(wordOption)"
       >
         {{ wordOption }}
-      </button>
+      </button>   
     </div>
   </div>
 </template>

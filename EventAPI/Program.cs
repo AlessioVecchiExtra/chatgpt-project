@@ -19,7 +19,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IVoteRepository, InMemoryVoteRepository>();
-builder.Services.AddSingleton<IQuestionRepository, InMemoryQuestionRepository>();
+//builder.Services.AddSingleton<IQuestionRepository, InMemoryQuestionRepository>();
+builder.Services.AddSingleton<IQuestionRepository, JsonQuestionRepository>();
 
 var app = builder.Build();
 
