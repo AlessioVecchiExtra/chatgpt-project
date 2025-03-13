@@ -10,27 +10,43 @@ namespace EventAPI.Repositories
         {
             new Question
             {
-                SessionId = 1,
+                Id = 1,
                 QuestionText = "Quale parola rappresenta meglio la Sessione 1?",
-                Terms = new List<string> { "Innovazione 1", "Collaborazione", "Creatività", "Ispirazione", "Flessibilità", "Cambiamento", "Coinvolgimento", "Efficienza", "Qualità", "Eccellenza" }
+                QuestionAnswers = [
+                    new() { QuestionId = 1, AnswerText = "Innovazione",  Priority=1,  Deleted = false},
+                    new() { QuestionId = 1, AnswerText = "Collaborazione",  Priority=2,  Deleted = false},
+                    new() { QuestionId = 1, AnswerText = "Creatività",  Priority=3,  Deleted = false},
+                ]
+                //{  "Ispirazione", "Flessibilità", "Cambiamento", "Coinvolgimento", "Efficienza", "Qualità", "Eccellenza" }
+
             },
             new Question
             {
-                SessionId = 2,
+                Id = 2,
                 QuestionText = "Quale parola rappresenta meglio la Sessione 2?",
-                Terms = new List<string> { "Leadership", "Strategia", "Visione", "Comunicazione", "Integrità", "Passione", "Determinazione", "Empatia", "Resilienza", "Trasparenza" }
+                QuestionAnswers = [
+                    new() { QuestionId = 1, AnswerText = "Innovazione",  Priority=1,  Deleted = false},
+                    new() { QuestionId = 1, AnswerText = "Collaborazione",  Priority=2,  Deleted = false},
+                    new() { QuestionId = 1, AnswerText = "Creatività",  Priority=3,  Deleted = false},
+                ]
+                //Terms = new List<string> { "Leadership", "Strategia", "Visione", "Comunicazione", "Integrità", "Passione", "Determinazione", "Empatia", "Resilienza", "Trasparenza" }
             },
             new Question
             {
-                SessionId = 3,
+                Id = 3,
                 QuestionText = "Quale parola rappresenta meglio la Sessione 3?",
-                Terms = new List<string> { "Innovazione 3", "Collaborazione", "Creatività", "Ispirazione", "Flessibilità", "Cambiamento", "Coinvolgimento", "Efficienza", "Qualità", "Eccellenza" }
+                QuestionAnswers = [
+                    new() { QuestionId = 1, AnswerText = "Innovazione",  Priority=1,  Deleted = false},
+                    new() { QuestionId = 1, AnswerText = "Collaborazione",  Priority=2,  Deleted = false},
+                    new() { QuestionId = 1, AnswerText = "Creatività",  Priority=3,  Deleted = false},
+                ]
+                //Terms = new List<string> { "Innovazione 3", "Collaborazione", "Creatività", "Ispirazione", "Flessibilità", "Cambiamento", "Coinvolgimento", "Efficienza", "Qualità", "Eccellenza" }
             }
         };
 
-        public Question? GetQuestionBySessionId(int sessionId)
+        public Task<Question?> GetById(int questionId)
         {
-            return _questions.FirstOrDefault(q => q.SessionId == sessionId);
+            return  Task.FromResult(_questions.FirstOrDefault(q => q.Id == questionId));
         }
     }
 }

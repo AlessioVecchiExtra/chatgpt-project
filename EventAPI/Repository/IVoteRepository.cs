@@ -4,8 +4,8 @@ namespace EventAPI.Repositories
 {
     public interface IVoteRepository
     {
-        Task AddVoteAsync(Vote vote);
-        Task<List<Vote>> GetAllVotesAsync();
-        Task<List<Vote>> GetVotesBySessionAsync(int sessionId);
+        Task Add(Vote vote);
+        Task<List<Vote>> GetAll(int meetingId);        
+        Task<List<Vote>> GetVotesByQuestionId(int sessionId);
     }
 }

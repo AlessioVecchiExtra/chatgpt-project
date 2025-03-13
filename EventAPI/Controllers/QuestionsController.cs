@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using EventAPI.Models;
 using EventAPI.Repositories;
+using AutoMapper;
+using EventAPI.Dto;
+using System.Threading.Tasks;
 
 namespace EventAPI.Controllers
 {
@@ -9,21 +12,27 @@ namespace EventAPI.Controllers
     public class QuestionsController : ControllerBase
     {
         private readonly IQuestionRepository _questionRepository;
+        private readonly IMapper _mapper;
 
-        public QuestionsController(IQuestionRepository questionRepository)
+        public QuestionsController(IQuestionRepository questionRepository, IMapper mapper)
         {
             _questionRepository = questionRepository;
+            _mapper = mapper;
         }
 
-        [HttpGet("{sessionId}")]
-        public ActionResult<Question> GetQuestion(int sessionId)
+        [HttpGet("{questionId}")]
+        public async Task<ActionResult<QuestionDto>> GetQuestion(int questionId)
         {
-            var question = _questionRepository.GetQuestionBySessionId(sessionId);
+            var question = await _questionRepository.GetById(questionId);
+
             if (question == null)
             {
                 return NotFound();
             }
-            return Ok(question);
+            
+            var dto = _mapper.Map<QuestionDto>(question);
+
+            return Ok(dto);
         }
     }
 }

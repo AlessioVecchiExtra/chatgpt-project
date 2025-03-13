@@ -1,47 +1,46 @@
 // src/store/sessions.js
 
-import { defineStore } from 'pinia'
-import config from '@/config.js'
+import { defineStore } from "pinia";
+import config from "@/config.js";
 
-export const useSessionsStore = defineStore('sessions', {
+export const useSessionsStore = defineStore("sessions", {
   state: () => ({
-    allVotes: []
+    allVotes: [],
   }),
 
   actions: {
-    async addWordToSession(sessionId, word) {
-      const vote = { sessionId: parseInt(sessionId), word }
+    async addWordToSession(questionId, answerId, answerText) {
+      const vote = { questionId: parseInt(questionId), questionAnswerId: parseInt(answerId), questionAnswerText: answerText };
       try {
-        await fetch(`${config.API_BASE_URL}/Votes`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(vote)
-        })
+        await fetch(`${config.API_BASE_URL}/votes`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(vote),
+        });
       } catch (error) {
-        console.error('Errore:', error)
+        console.error("Errore:", error);
       }
     },
 
     async loadAllVotesFromApi() {
       try {
-        const response = await fetch(`${config.API_BASE_URL}/Votes`)
+        const response = await fetch(`${config.API_BASE_URL}/votes/${config.CURRENT_MEETING_ID}`);
         if (!response.ok) {
-          throw new Error('Errore nel recupero dei voti')
+          throw new Error("Errore nel recupero dei voti");
         }
-        this.allVotes = await response.json()
+        this.allVotes = await response.json();
       } catch (error) {
-        console.error('Errore:', error)
+        console.error("Errore:", error);
       }
-    }
+    },
   },
 
   getters: {
-    getVotesForSession: (state) => (sessionId) => {
-      return state.allVotes.filter(v => v.sessionId === Number(sessionId))
+    getVotesByQuestionId: (state) => (sessionId) => {
+      return state.allVotes.filter((v) => v.questionId === Number(sessionId));
     },
-    getAllWords: (state) => {
-      // Ritorna solo l'array di parole (da tutti i voti)
-      return state.allVotes.map(v => v.word)
-    }
-  }
-})
+    getAllVotes: (state) => {    
+      return state.allVotes;//.map((v) => v.word);
+    },
+  },
+});

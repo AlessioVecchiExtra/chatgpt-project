@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using EventAPI.Models;
 using EventAPI.Repositories;
+using AutoMapper;
 
 namespace MyEventApi.Controllers
 {
@@ -9,38 +10,41 @@ namespace MyEventApi.Controllers
     public class VotesController : ControllerBase
     {
         private readonly IVoteRepository _repository;
+        private readonly IMapper _mapper;
 
-        public VotesController(IVoteRepository repository)
+        public VotesController(IVoteRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         // POST: api/Votes
         [HttpPost]
-        public async Task<IActionResult> PostVote([FromBody] Vote vote)
+        public async Task<IActionResult> PostVote([FromBody] VoteDto voteDto)
         {
-            if (vote == null || string.IsNullOrWhiteSpace(vote.Word))
+            if (voteDto == null || (voteDto.QuestionAnswerId == null && string.IsNullOrWhiteSpace(voteDto.QuestionAnswerText)))                
             {
                 return BadRequest("Vote or word is invalid.");
             }
-
-            await _repository.AddVoteAsync(vote);
+            
+            await _repository.Add(_mapper.Map<Vote>(voteDto));
             return Ok();
         }
 
-        // GET: api/Votes
-        [HttpGet]
-        public async Task<ActionResult<List<Vote>>> GetAllVotes()
+        // GET: api/votes/1
+        [HttpGet("{meetingId:int}")]
+        public async Task<ActionResult<List<VoteDto>>> GetAllVotes(int meetingId)
         {
-            var votes = await _repository.GetAllVotesAsync();
+            var votes = _mapper.Map<List<VoteDto?>>(await _repository.GetAll(meetingId));
+
             return Ok(votes);
         }
 
-        // GET: api/Votes/session/1
-        [HttpGet("session/{sessionId:int}")]
-        public async Task<ActionResult<List<Vote>>> GetVotesBySession(int sessionId)
+        // GET: api/votes/question/1
+        [HttpGet("question/{questionId:int}")]
+        public async Task<ActionResult<List<VoteDto>>> GetVotesBySession(int questionId)
         {
-            var votes = await _repository.GetVotesBySessionAsync(sessionId);
+            var votes = _mapper.Map<List<VoteDto?>>(await _repository.GetVotesByQuestionId(questionId));
             return Ok(votes);
         }
     }

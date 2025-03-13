@@ -4,11 +4,11 @@
     <div class="d-flex flex-wrap gap-2">
       <button
         v-for="wordOption in terms"
-        :key="wordOption"
+        :key="wordOption.Id"
         class="btn btn-outline-primary"
         @click="selectWord(wordOption)"
       >
-        {{ wordOption }}
+        {{ wordOption.answerText }} - {{ wordOption.id }}
       </button>   
     </div>
   </div>
@@ -34,7 +34,7 @@ export default defineComponent({
     const sessionsStore = useSessionsStore()
 
     async function selectWord(word) {
-      await sessionsStore.addWordToSession(props.sessionId, word)
+      await sessionsStore.addWordToSession(props.sessionId, word.Id, word.answerText)
     }
 
     return {

@@ -10,24 +10,26 @@ export const useQuestionsStore = defineStore('questions', {
     async loadQuestion(sessionId) {
       try {
         // Esempio: GET /api/Questions/1
-        const response = await fetch(`${config.API_BASE_URL}/Questions/${sessionId}`)
+        const response = await fetch(`${config.API_BASE_URL}/questions/${sessionId}`)
         if (!response.ok) {
           throw new Error('Errore nel recupero della domanda')
         }
 
-        const data = await response.json() 
+        const data = await response.json() ;
+        console.log(data);
         // data ha la forma:
         // {
         //   "sessionId": 1,
         //   "questionText": "Quale parola rappresenta meglio la Sessione 1?",
-        //   "terms": [ ...10 termini... ]
+        //   "questionAnswers": [ ...10 termini... ]
         // }
 
         // Salviamo i dati nello state
         this.questionsMap[sessionId] = {
           questionText: data.questionText,
-          terms: data.terms
+          questionAnswers: data.questionAnswers
         }
+        
 
       } catch (error) {
         console.error('Errore:', error)

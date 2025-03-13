@@ -62,11 +62,12 @@ export default defineComponent({
     const filteredWords = computed(() => {
       if (selectedSession.value === 'all') {
         // Mostra tutti i voti (ricavati dallo store)
-        return sessionsStore.getAllWords
+        const votes = sessionsStore.getVotesByQuestionId(selectedSession.value)
+        return  votes.map(v => v.questionAnswerText)
       } else {
         // Filtra solo i voti della sessione selezionata
-        const votes = sessionsStore.getVotesForSession(selectedSession.value)
-        return votes.map(v => v.word)
+        const votes = sessionsStore.getVotesByQuestionId(selectedSession.value)
+        return votes.map(v => v.questionAnswerText)
       }
     })
 

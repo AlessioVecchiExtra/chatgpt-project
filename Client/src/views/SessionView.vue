@@ -5,7 +5,7 @@
     <div v-if="questionData">
       <h2>{{ questionData.questionText }}</h2>
       <!-- Passiamo a SessionForm i 10 termini recuperati -->
-      <SessionForm :sessionId="sessionId" :terms="questionData.terms" />
+      <SessionForm :sessionId="sessionId" :terms="questionData.questionAnswers" />
     </div>
 
     <div v-else>

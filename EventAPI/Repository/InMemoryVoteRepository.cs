@@ -6,20 +6,20 @@ namespace EventAPI.Repositories
     {
         private readonly List<Vote> _votes = new();
 
-        public Task AddVoteAsync(Vote vote)
+        public Task Add(Vote vote)
         {
             _votes.Add(vote);
             return Task.CompletedTask;
         }
 
-        public Task<List<Vote>> GetAllVotesAsync()
-        {
+        public Task<List<Vote>> GetAll(int meetingId)
+        {            
             return Task.FromResult(_votes.ToList());
         }
 
-        public Task<List<Vote>> GetVotesBySessionAsync(int sessionId)
+        public Task<List<Vote>> GetVotesByQuestionId(int questionId)
         {
-            var result = _votes.Where(v => v.SessionId == sessionId).ToList();
+            var result = _votes.Where(v => v.QuestionId == questionId).ToList();
             return Task.FromResult(result);
         }
     }

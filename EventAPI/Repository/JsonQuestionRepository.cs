@@ -26,9 +26,9 @@ namespace EventAPI.Repositories
             }
         }
 
-        public Question? GetQuestionBySessionId(int sessionId)
+        public Task<Question?> GetById(int Id)
         {
-            return _questions.FirstOrDefault(q => q.SessionId == sessionId);
+            return Task.FromResult(_questions.FirstOrDefault(q => q.Id == Id));
         }
     }
 }

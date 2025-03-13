@@ -5,6 +5,6 @@ namespace EventAPI.Repositories
 {
     public interface IQuestionRepository
     {
-        Question? GetQuestionBySessionId(int sessionId);
+        Task<Question?> GetById(int Id);
     }
 }
