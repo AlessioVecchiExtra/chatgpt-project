@@ -35,7 +35,8 @@ namespace MyEventApi.Controllers
         [HttpGet("{meetingId:int}")]
         public async Task<ActionResult<List<VoteDto>>> GetAllVotes(int meetingId)
         {
-            var votes = _mapper.Map<List<VoteDto?>>(await _repository.GetAll(meetingId));
+            var items = await _repository.GetAll(meetingId);
+            var votes = _mapper.Map<List<VoteDto?>>(items);
 
             return Ok(votes);
         }

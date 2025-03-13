@@ -2,6 +2,7 @@ using EventAPI.Repositories;
 using EventAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using MyEventApi.MappingProfiles;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,17 +23,22 @@ builder.Services.AddAutoMapper(typeof(CommonProfile));
 //builder.Services.AddAutoMapper(typeof(EventAPI).Assembly);
 
 // Configura il database SQL Server
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    options.UseSqlServer(connectionString);
+    options.UseLazyLoadingProxies();
+});
 
 // 2 Aggiungiamo i servizi dell'API
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddScoped<IVoteRepository, VoteRepository>();
-builder.Services.AddSingleton<IVoteRepository, InMemoryVoteRepository>();
+builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
+builder.Services.AddScoped<IVoteRepository, VoteRepository>();
+//builder.Services.AddSingleton<IVoteRepository, InMemoryVoteRepository>();
 //builder.Services.AddSingleton<IQuestionRepository, InMemoryQuestionRepository>();
-builder.Services.AddSingleton<IQuestionRepository, JsonQuestionRepository>();
+//builder.Services.AddSingleton<IQuestionRepository, JsonQuestionRepository>();
 
 var app = builder.Build();
 

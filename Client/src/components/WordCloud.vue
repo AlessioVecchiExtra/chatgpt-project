@@ -36,9 +36,9 @@ export default defineComponent({
     const colors = ['#FFC300', '#00A8E8', '#F8F9FA', '#FF6F61', '#00C49A']
 
     function generateCloud() {
-      if (!wordCloudContainer.value) return
-
+      if (!wordCloudContainer.value) return      
       const list = computeWordFrequencies()
+
       WordCloud(wordCloudContainer.value, {
         list,
         gridSize: 10,

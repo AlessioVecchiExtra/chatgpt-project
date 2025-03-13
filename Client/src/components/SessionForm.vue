@@ -34,7 +34,7 @@ export default defineComponent({
     const sessionsStore = useSessionsStore()
 
     async function selectWord(word) {
-      await sessionsStore.addWordToSession(props.sessionId, word.Id, word.answerText)
+      await sessionsStore.addWordToSession(props.sessionId, word.id, word.answerText)
     }
 
     return {
