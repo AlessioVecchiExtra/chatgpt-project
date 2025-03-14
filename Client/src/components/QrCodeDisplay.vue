@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>Scansiona questo QR code per votare da smartphone:</p>
-    <qrcode-vue :value="qrValue" size="200" />
+    <qrcode-vue :value="qrValue" :size="200" />
   </div>
 </template>
 
