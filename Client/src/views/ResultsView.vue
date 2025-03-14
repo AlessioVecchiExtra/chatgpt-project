@@ -13,7 +13,7 @@
     </div>
 
     <div class="card p-3">
-      <WordCloud :words="filteredWords" minFontSize="20" maxFontSize="70" />
+      <WordCloud :words="filteredWords" :minFontSize="15" :maxFontSize="40" />
     </div>
   </div>
 </template>

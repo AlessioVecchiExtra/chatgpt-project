@@ -35,7 +35,7 @@ export const useSessionsStore = defineStore("sessions", {
           throw new Error("Errore nel recupero dei voti");
         }
         this.allVotes = await response.json();
-        console.log(this.allVotes)
+        //console.log(this.allVotes)
       } catch (error) {
         console.error("Errore:", error);
       }
