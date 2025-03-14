@@ -1,4 +1,6 @@
 ﻿
+Install-Package Microsoft.EntityFrameworkCore.Tools 
+
 SCAFFOLDING
 ===========
 

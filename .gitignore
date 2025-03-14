@@ -1,3 +1,10 @@
+#simply making an entry in gitignore may not ignore files, you may need to commit it. I used the following method and worked for me
+#git rm -r --cached .
+#git add .
+#then
+#git commit -am "Remove ignored files"
+
+
 
 # User-specific files
 *.rsuser

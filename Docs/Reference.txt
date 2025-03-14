@@ -1,0 +1,21 @@
+
+
+
+Typescript
+----------
+https://www.typescripttutorial.net/
+https://www.typescriptlang.org/
+
+
+Vue
+---
+https://vuejs.org/tutorial
+https://vuejs.org/guide/introduction.html
+
+Astro tutorial
+--------------
+https://docs.astro.build/en/tutorial/6-islands/3/
+https://astrojs-tutorial-minimal.netlify.app/about/
+https://github.com/AlessioVecchiExtra/minimal
+
+https://docs.astro.build/en/guides/data-fetching/

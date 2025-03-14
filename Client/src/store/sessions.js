@@ -6,7 +6,7 @@ import config from "@/config.js";
 export const useSessionsStore = defineStore("sessions", {
   state: () => ({
     allVotes: [],
-  }),
+  }), 
 
   actions: {
     async addWordToSession(questionId, answerId, answerText) {
