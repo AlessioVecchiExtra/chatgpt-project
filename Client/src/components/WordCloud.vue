@@ -74,19 +74,19 @@ export default defineComponent({
 
       updateCanvasSize() // Ottieni la dimensione del canvas
 
-      console.log("canvas size ", width.value, height.value)
+      //console.log("canvas size ", width.value, height.value)
 
       const list = computeWordFrequencies()
       const maxCount = Math.max(...list.map(item => item[1]), 1) // Frequenza massima
       const minCount = Math.min(...list.map(item => item[1]), Infinity) // Frequenza minima
 
-      console.log(minCount, maxCount)
+      //console.log(minCount, maxCount)
 
       WordCloud(wordCloudContainer.value, {
         list,
         // list: list.map(([word, freq]) => [word, adjustFontSize(word, (freq / maxCount) * props.maxFontSize)]),
         gridSize: Math.round(width.value / 50),
-        weightFactor: (size) => { console.log(Math.max((size / maxCount) * props.maxFontSize, props.minFontSize)); return Math.max((size / maxCount) * props.maxFontSize, props.minFontSize); }, //Math.max((size / maxCount) * props.maxFontSize, props.minFontSize),
+        weightFactor: (size) => { /*console.log(Math.max((size / maxCount) * props.maxFontSize, props.minFontSize));*/ return Math.max((size / maxCount) * props.maxFontSize, props.minFontSize); }, //Math.max((size / maxCount) * props.maxFontSize, props.minFontSize),
         fontFamily: props.fontFamily,
         color: () => colors[Math.floor(Math.random() * colors.length)], // Sceglie un colore random dalla palette
         backgroundColor: props.backgroundColor,

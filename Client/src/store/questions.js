@@ -16,7 +16,8 @@ export const useQuestionsStore = defineStore('questions', {
         }
 
         const data = await response.json() ;
-        console.log(data);
+        
+        //console.log(data);
         // data ha la forma:
         // {
         //   "sessionId": 1,

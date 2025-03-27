@@ -11,7 +11,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173","http://localhost:7771") // Porta del frontend Vue
+        policy.WithOrigins("http://localhost:5173",        
+        "https://meeting-with-survey.dev.extra.it",
+        "https://meeting-with-survey-production.dev.extra.it")
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials(); // Se necessario per autenticazione
