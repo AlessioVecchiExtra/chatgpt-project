@@ -1,12 +1,13 @@
 <template>
   <div class="container-fluid">
-    <div class="main-content row main-bg">
+    <div class="main-content row main-bg justify-content-center">
       <header class="mt-5 top-0 w-100 text-center mb-5 mb-lg-0">
         <img class="d-none d-lg-inline-flex" src="../images/title.webp">
         <img class="d-lg-none" src="../images/title-m.webp">
         <h5>Vota da smartphone la parola che rappresenta al meglio questa sessione​</h5>
       </header>
-      <div v-if="questionData">
+      
+      <div v-if="questionData" class="col-12 col-lg-10">
         <!-- <h2>{{ questionData.questionText }}</h2>
         Passiamo a SessionForm i 10 termini recuperati -->
         <SessionForm :sessionId="sessionId" :terms="questionData.questionAnswers" />
@@ -14,10 +15,10 @@
       <div v-else>
         <p>Caricamento in corso...</p>
       </div>
-
+    
       <QrCodeDisplay :sessionId="sessionId" />
 
-      <button class="position-absolute bottom-0 mb-4 end-0 btn fs-1 me-5 w-auto"><i class="bi bi-arrow-right-circle text-secondary"></i></button>
+      <button class="position-absolute bottom-0 mb-4 end-0 btn fs-1 me-5 w-auto d-none d-lg-block"><i class="bi bi-arrow-right-circle text-secondary"></i></button>
 
     </div>
   </div>

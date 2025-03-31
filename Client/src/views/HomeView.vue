@@ -1,21 +1,26 @@
 <template>
-  <div class="container">
-    <h1>Benvenuti all'evento</h1>
-    <div class="my-2">
-      <p>Seleziona una sessione per iniziare.</p>
-      <div class="d-flex flex-row">
-        <router-link to="/session/1" class="btn btn-outline-primary me-2">Sessione 1 &ge;</router-link>
-        <router-link to="/session/2" class="btn btn-outline-primary me-2">Sessione 2 &ge;</router-link>
-        <router-link to="/session/3" class="btn btn-outline-primary me-2">Sessione 3 &ge;</router-link>
+
+<div class="container-fluid">
+    <div class="row">
+      <header class="position-relative mt-3 w-100 text-center mb-5 col-12">
+        <img src="../images/title.webp">
+      </header>
+      <h5 class="text-center mb-4">Seleziona una sessione per iniziare.</h5>
+      <div class="col-12 text-center d-flex justify-content-center gap-3">
+        <router-link to="/session/1" class="btn btn-outline-primary btn-lg border-secondary">Sessione 1 <i class="bi bi-arrow-right-short"></i></router-link>
+        <router-link to="/session/2" class="btn btn-outline-primary btn-lg border-secondary">Sessione 2 <i class="bi bi-arrow-right-short"></i></router-link>
+        <router-link to="/session/3" class="btn btn-outline-primary btn-lg border-secondary">Sessione 3 <i class="bi bi-arrow-right-short"></i></router-link>
       </div>
-    </div>
-    <div class="my-5">
-      <p>Risultati</p>
-      <div class="d-flex flex-column">
-        <router-link to="/results/1" class="me-2">Vedi risultati Sessione 1 &ge;</router-link>
-        <router-link to="/results/2" class="me-2">Vedi risultati Sessione 2 &ge;</router-link>
-        <router-link to="/results/3" class="me-2">Vedi risultati Sessione 3 &ge;</router-link>
+
+      <div class="my-5"></div>
+      <h5 class="text-center mb-4">Risultati</h5>
+      <div class="col-12 text-center d-flex justify-content-center gap-3">
+        <router-link to="/results/1" class="btn btn-outline-dark btn-lg">Sessione 1 <i class="bi bi-arrow-right-short"></i></router-link>
+        <router-link to="/results/2" class="btn btn-outline-dark btn-lg">Sessione 2 <i class="bi bi-arrow-right-short"></i></router-link>
+        <router-link to="/results/3" class="btn btn-outline-dark btn-lg">Sessione 3 <i class="bi bi-arrow-right-short"></i></router-link>
+        <router-link to="/results/all" class="btn btn-outline-dark btn-lg">Tutte le sessioni <i class="bi bi-arrow-right-short"></i></router-link>
       </div>
+
     </div>
   </div>
 </template>

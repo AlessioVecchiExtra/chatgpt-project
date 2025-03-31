@@ -1,17 +1,15 @@
 <template>
-  <div class="container">
     <div class="row justify-content-center row-cols-2 row-cols-lg-auto g-lg-4 g-3 row-gap-4">
       <div v-for="wordOption in terms"
       :key="wordOption.Id"
       class="col">
       <button
-        class="btn btn-outline-primary border-secondary btn-lg w-100"
+        class="btn btn-outline-primary border-secondary btn-lg w-100 fs-6"
         @click="selectWord(wordOption)"
       >
         {{ wordOption.answerText }}
       </button>   
     </div>
-  </div>
   </div>
 </template>
 
