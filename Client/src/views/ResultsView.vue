@@ -1,8 +1,13 @@
 <template>
-  <div class="container">
-    <h1 class="text-center mt-4">Risultati</h1>
+  <div class="container-fluid">
+    <div class="main-content row main-bg">
+      <header class="mt-5 top-0 w-100 text-center">
+        <img src="../images/title.webp">
+      </header>
+      <WordCloud :words="filteredWords" :minFontSize="25" :maxFontSize="60" />
+    </div>
 
-    <div class="mb-3">
+    <div class="mb-3 d-none">
       <label for="sessionSelect" class="form-label">Seleziona una sessione:</label>
       <select id="sessionSelect" v-model="selectedSession" class="form-select">
         <option value="all">Tutte</option>
@@ -12,9 +17,7 @@
       </select>
     </div>
 
-    <div class="card p-3">
-      <WordCloud :words="filteredWords" :minFontSize="15" :maxFontSize="40" />
-    </div>
+    
   </div>
 </template>
 

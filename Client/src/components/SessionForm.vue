@@ -1,16 +1,17 @@
 <template>
   <div class="container">
-    <p class="lead">Scegli la parola che rappresenta meglio questa sessione:</p>
-    <div class="d-flex flex-wrap gap-2">
+    <div class="row justify-content-center row-cols-2 row-cols-lg-auto g-lg-4 g-3 row-gap-4">
+      <div v-for="wordOption in terms"
+      :key="wordOption.Id"
+      class="col">
       <button
-        v-for="wordOption in terms"
-        :key="wordOption.Id"
-        class="btn btn-outline-primary"
+        class="btn btn-outline-primary border-secondary btn-lg w-100"
         @click="selectWord(wordOption)"
       >
-        {{ wordOption.answerText }} - {{ wordOption.id }}
+        {{ wordOption.answerText }}
       </button>   
     </div>
+  </div>
   </div>
 </template>
 

@@ -1,18 +1,25 @@
 <template>
-  <div class="container">
-    <h1>Sessione {{ sessionId }}</h1>
+  <div class="container-fluid">
+    <div class="main-content row main-bg">
+      <header class="mt-5 top-0 w-100 text-center mb-5 mb-lg-0">
+        <img class="d-none d-lg-inline-flex" src="../images/title.webp">
+        <img class="d-lg-none" src="../images/title-m.webp">
+        <h5>Vota da smartphone la parola che rappresenta al meglio questa sessione​</h5>
+      </header>
+      <div v-if="questionData">
+        <!-- <h2>{{ questionData.questionText }}</h2>
+        Passiamo a SessionForm i 10 termini recuperati -->
+        <SessionForm :sessionId="sessionId" :terms="questionData.questionAnswers" />
+      </div>
+      <div v-else>
+        <p>Caricamento in corso...</p>
+      </div>
 
-    <div v-if="questionData">
-      <h2>{{ questionData.questionText }}</h2>
-      <!-- Passiamo a SessionForm i 10 termini recuperati -->
-      <SessionForm :sessionId="sessionId" :terms="questionData.questionAnswers" />
+      <QrCodeDisplay :sessionId="sessionId" />
+
+      <button class="position-absolute bottom-0 mb-4 end-0 btn fs-1 me-5 w-auto"><i class="bi bi-arrow-right-circle text-secondary"></i></button>
+
     </div>
-
-    <div v-else>
-      <p>Caricamento in corso...</p>
-    </div>
-
-    <QrCodeDisplay :sessionId="sessionId" />
   </div>
 </template>
 

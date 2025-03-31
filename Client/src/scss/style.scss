@@ -6,7 +6,10 @@
 // Configuration
 @import "../../node_modules/bootstrap/scss/functions";
 
-
+$prefix:lp-;
+$blue:#0C1E3B;
+$body-color:$blue;
+$secondary:#8CC63F;
 
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/variables-dark";
@@ -53,3 +56,54 @@
 // Utilities
 @import "../../node_modules/bootstrap/scss/utilities/api";
 // scss-docs-end import-stack
+
+.main-bg, .secondary-bg{
+    background-image: url(/src/images/main-bg-m.webp);
+    background-attachment: fixed;
+    background-position: bottom left;
+    background-size: cover;
+    @include media-breakpoint-up(lg) { 
+        background-image: url(/src/images/main-bg.webp);
+    }
+}
+.secondary-bg {
+    background-image: url(/src/images/secondary-bg-m.webp);
+    @include media-breakpoint-up(lg) { 
+        background-image: url(/src/images/secondary-bg.webp);
+    }
+}
+.main-content {
+        align-items: center;
+        min-height: 100vh;
+}
+header {
+    position: relative;
+    @include media-breakpoint-up(lg) { 
+        position: absolute;
+    }
+    img {
+        max-width: 18rem;
+        width: 100%;
+        @include media-breakpoint-up(lg) { 
+            max-width: 30rem;
+        }
+    }
+}
+.qr-code {
+    max-width: 12rem;
+    background-color: white;
+    padding: 0.5rem;
+    border: #8CC63F solid 1px;
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
+    img{
+        max-width: 100%;
+    }
+    @include media-breakpoint-down(lg) { 
+        display: none;
+     }
+}
+.btn-outline-primary {
+    --lp-btn-bg:white;
+}

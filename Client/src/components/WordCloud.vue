@@ -15,7 +15,7 @@ export default defineComponent({
     },
     backgroundColor: {
       type: String,
-      default: '#001f3f' // Navy
+      default: 'transparent' // Navy
     },
     minFontSize: {
       type: Number,
@@ -23,11 +23,11 @@ export default defineComponent({
     },
     maxFontSize: {
       type: Number,
-      default: 60
+      default: 40
     },
     fontFamily: {
       type: String,
-      default: 'Verdana'
+      default: 'Times New Roman'
     }
   },
   setup(props) {
@@ -37,7 +37,7 @@ export default defineComponent({
     const height = ref(0)
 
     // Palette di colori consigliata
-    const colors = ['#FFC300', '#00A8E8', '#F8F9FA', '#FF6F61', '#00C49A']
+    const colors = ['#6438a4', '#44a6c2', '#d1bb7f']
 
     function updateCanvasSize() {
       if (wordCloudContainer.value) {
@@ -138,10 +138,7 @@ export default defineComponent({
 <style scoped>
 .wordcloud-container {
   width: 100%;
-  height: 400px;
-  background-color: #001f3f;
-  /* Sfondo navy */
-  border-radius: 10px;
-  padding: 10px;
+  height: 80vh;
+  background-color: transparent;
 }
 </style>
