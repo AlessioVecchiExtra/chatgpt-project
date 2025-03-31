@@ -16,8 +16,9 @@
       </div>
 
       <QrCodeDisplay :sessionId="sessionId" />
-
-      <button class="position-absolute bottom-0 mb-4 end-0 btn fs-1 me-5 w-auto"><i class="bi bi-arrow-right-circle text-secondary"></i></button>
+      
+      <a :href="`/session/${nextSessionId()}`" class="position-absolute bottom-0 mb-4 end-0 btn fs-1 me-5 w-auto"><i
+          class="bi bi-arrow-right-circle text-secondary"></i></a>
 
     </div>
   </div>
@@ -51,9 +52,18 @@ export default defineComponent({
       return questionsStore.questionsMap[sessionId]
     })
 
+    const nextSessionId = () => {   
+      let currentId = parseInt(sessionId) + 1;      
+      if (currentId > 3) {
+        currentId = 1;
+      }      
+      return currentId;
+    }
+
     return {
       sessionId,
-      questionData
+      questionData,
+      nextSessionId
     }
   }
 })
