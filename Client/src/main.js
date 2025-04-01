@@ -4,6 +4,7 @@ import router from './router'
 import { createPinia } from 'pinia'
 
 // Importa Bootstrap e i suoi CSS
+import './fonts/font.css'
 import './css/style.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'bootstrap-icons/font/bootstrap-icons.css'
