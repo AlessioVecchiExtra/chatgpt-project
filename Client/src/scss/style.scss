@@ -74,10 +74,9 @@ $secondary:#8CC63F;
     }
 }
 .main-content {
-    align-items: center;
-    min-height: 100vh;
-    @include media-breakpoint-down(lg) { 
-            align-items: start;
+    @include media-breakpoint-up(lg) { 
+        align-items: center;
+        min-height: 100vh;
     }
 }
 header {

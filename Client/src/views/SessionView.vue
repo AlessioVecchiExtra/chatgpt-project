@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid">
-    <div class="main-content row main-bg justify-content-center">
+  <div class="container-fluid min-vh-100 main-bg">
+    <div class="main-content row justify-content-center">
       <header class="mt-5 top-0 w-100 text-center mb-5 mb-lg-0">
         <img class="d-none d-lg-inline-flex" src="../images/title.webp">
         <img class="d-lg-none" src="../images/title-m.webp">
