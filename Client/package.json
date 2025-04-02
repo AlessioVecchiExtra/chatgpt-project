@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
     "pinia": "^2.0.33",
     "qrcode-vue3": "^1.7.1",
     "vue": "^3.2.47",

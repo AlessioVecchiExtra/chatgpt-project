@@ -8,5 +8,8 @@ export default defineConfig({
     alias: {
       '@': '/src'
     }
+  },
+  build: {
+    assetsInlineLimit: 0, // forza l’esportazione dei font come file
   }
 })
