@@ -2,18 +2,17 @@ using EventAPI.Repositories;
 using EventAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using MyEventApi.MappingProfiles;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var specificCorsOrigins = builder.Configuration.GetSection("Cors:Origins").Get<string[]>()!;
 
 // 1 Aggiungiamo il servizio CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173",        
-        "https://meeting-with-survey.dev.extra.it",
-        "https://meeting-with-survey-production.dev.extra.it")
+        policy.WithOrigins(specificCorsOrigins)
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials(); // Se necessario per autenticazione
