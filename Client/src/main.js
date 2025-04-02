@@ -7,7 +7,7 @@ import { createPinia } from 'pinia'
 import './fonts/font.css'
 import './css/style.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import 'bootstrap-icons/font/bootstrap-icons.css'
+// import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const pinia = createPinia()
 
