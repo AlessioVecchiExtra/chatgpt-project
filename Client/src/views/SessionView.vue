@@ -18,7 +18,7 @@
     
       <QrCodeDisplay :sessionId="sessionId" />
       
-      <a :href="`/session/${nextSessionId()}`" class="position-absolute bottom-0 mb-4 end-0 btn fs-1 me-5 w-auto"><i
+      <a :href="`/session/${nextSessionId()}`" class="position-absolute bottom-0 mb-4 end-0 btn fs-1 me-5 w-auto d-lg-block d-none"><i
           class="bi bi-arrow-right-circle text-secondary"></i></a>
 
     </div>
