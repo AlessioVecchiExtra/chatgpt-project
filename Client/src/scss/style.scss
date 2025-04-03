@@ -106,7 +106,22 @@ header {
     @include media-breakpoint-down(lg) { 
         display: none;
      }
+     p{
+        position: absolute;
+        bottom: -34px;
+        text-align: center;
+        font-weight: 700;
+        margin: 0;
+        width: 100%;
+        font-size: 1.5rem;
+        left: 0;
+    }
 }
 .btn-outline-primary {
     --lp-btn-bg:white;
+}
+.btn-lg {
+    @include media-breakpoint-up(lg) { 
+        --lp-btn-font-size:2.2rem;
+     }
 }

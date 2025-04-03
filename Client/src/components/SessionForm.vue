@@ -4,7 +4,7 @@
       :key="wordOption.Id"
       class="col">
       <button
-        class="btn btn-outline-primary border-secondary btn-lg w-100 fs-6"
+        class="btn btn-outline-primary border-secondary btn-lg w-100"
         @click="selectWord(wordOption)"
       >
         {{ wordOption.answerText }}
