@@ -49,9 +49,8 @@ export const useSessionsStore = defineStore("sessions", {
 					body: JSON.stringify(vote),
 				});
 
-      // Se la chiamata ha successo, marca la sessione come votata
-      this.markVoted(questionId);
-
+				// Se la chiamata ha successo, marca la sessione come votata
+				this.markVoted(questionId);
 			} catch (error) {
 				console.error("Errore:", error);
 			}
