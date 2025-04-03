@@ -12,21 +12,21 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/session/:id',
+    path: '/session/:sessionId',
     name: 'Session',
     component: SessionView,
     props: true
   },
   {
-    path: '/thankyou',
+    path: '/thankyou/:sessionId',
     name: 'ThankYou',
     component: ThankYouView,   
+    props: true
   },
   {
-    path: '/results/:sessionId?',
+    path: '/results',
     name: 'Results',
-    component: ResultsView,
-    props: true
+    component: ResultsView    
   }
 ]
 
