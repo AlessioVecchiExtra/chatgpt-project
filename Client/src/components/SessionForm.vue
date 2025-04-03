@@ -30,14 +30,17 @@ export default defineComponent({
       default: () => []
     }
   },
-  setup(props) {
+  emits: ["voted"],
+  setup(props, { emit }) {
     const sessionsStore = useSessionsStore()
     const router = useRouter();
 
     async function selectWord(word) {
-      await sessionsStore.addWordToSession(props.sessionId, word.id, word.answerText)     
-      router.push({ path: `/thankyou`})
-      //router.push({ path: `/thankyou/${props.sessionId}`})
+
+      emit('voted', word.id, word.answerText);
+      // await sessionsStore.addWordToSession(props.sessionId, word.id, word.answerText)     
+      // router.push({ path: `/thankyou`})
+      // //router.push({ path: `/thankyou/${props.sessionId}`})
     }
 
     return {

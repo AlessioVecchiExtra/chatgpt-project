@@ -15,5 +15,15 @@ namespace EventAPI.Repositories
         {
             return await _context.Questions.FirstOrDefaultAsync(v => v.Id == Id);
         }
+
+        public async Task<IEnumerable<Question>> GetByMeetingId(int meetingId)
+        {
+            return _context.Questions.Where(v => v.MeetingId == meetingId);
+        }
+
+        public Task<int> GetByMeetingIdCount(int meetingId)
+        {
+            return Task.FromResult(_context.Questions.Count(v => v.MeetingId == meetingId));
+        }
     }
 }

@@ -6,11 +6,11 @@ export const useQuestionsStore = defineStore('questions', {
     // Mappa sessionId -> oggetto { questionText, terms: [] }
     questionsMap: {}
   }),
-  actions: {
+  actions: {    
     async loadQuestion(sessionId) {
       try {
         // Esempio: GET /api/Questions/1
-        const response = await fetch(`${config.API_BASE_URL}/questions/${sessionId}`)
+        const response = await fetch(`${config.API_BASE_URL}/questions/${config.CURRENT_MEETING_ID}/getById/${sessionId}`)
         if (!response.ok) {
           throw new Error('Errore nel recupero della domanda')
         }

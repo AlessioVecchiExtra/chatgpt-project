@@ -7,7 +7,7 @@ namespace EventAPI.Repositories
 {
     public class JsonQuestionRepository : IQuestionRepository
     {
-        private readonly List<Question> _questions = new();
+        private readonly IEnumerable<Question> _questions = new List<Question>();
 
         // Esempio: passiamo l'ambiente per costruire il path del file
         public JsonQuestionRepository(IWebHostEnvironment env)
@@ -29,6 +29,16 @@ namespace EventAPI.Repositories
         public Task<Question?> GetById(int Id)
         {
             return Task.FromResult(_questions.FirstOrDefault(q => q.Id == Id));
+        }
+
+        public Task<IEnumerable<Question>> GetByMeetingId(int meetingId)
+        {
+            return Task.FromResult(_questions.Where(q => q.MeetingId == meetingId));
+        }
+
+        public Task<int> GetByMeetingIdCount(int meetingId)
+        {
+              return Task.FromResult(_questions.Count(q => q.MeetingId == meetingId));
         }
     }
 }
