@@ -4,7 +4,7 @@ import config from "@/config.js";
 export const useQuestionsStore = defineStore("questions", {
 	state: () => ({
 		// Mappa sessionId -> oggetto { questionText, terms: [] }
-		questionsMap: {},
+		questionsMap: {[config.CURRENT_MEETING_ID]: {}},
 		questionsCount: 0,
 	}),
 	actions: {
@@ -18,7 +18,7 @@ export const useQuestionsStore = defineStore("questions", {
 				// 	throw new Error("Errore nel recupero della domanda");
 				// }
 				//const data = await response.json();
-				
+
 				// data ha la forma:
 				// {
 				//   "sessionId": 1,
@@ -31,13 +31,13 @@ export const useQuestionsStore = defineStore("questions", {
 					throw new Error("Errore nel recupero della domanda");
 				}
 				const dataAll = await responseAll.json();
-				
+
 				this.questionsCount = dataAll.length;
 				const data = dataAll.find((x) => x.id == sessionId);
 
-				console.log(config.CURRENT_MEETING_ID)
 				// Salviamo i dati nello state
-				this.questionsMap[sessionId] = {
+				this.questionsMap[config.CURRENT_MEETING_ID] = {};
+				this.questionsMap[config.CURRENT_MEETING_ID][sessionId] = {
 					questionText: data.questionText,
 					questionAnswers: data.questionAnswers,
 				};

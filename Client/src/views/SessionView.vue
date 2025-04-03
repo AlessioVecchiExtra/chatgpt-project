@@ -39,6 +39,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { defineComponent, onMounted, computed, ref } from 'vue'
 import { useSessionsStore } from '@/store/sessions'
 import { useQuestionsStore } from '@/store/questions'
+import config from "@/config.js";
 
 export default defineComponent({
   name: 'SessionView',
@@ -68,7 +69,7 @@ export default defineComponent({
 
     // questionData è un computed che ritorna il record salvato nello store
     const questionData = computed(() => {
-      return questionsStore.questionsMap[sessionId]
+      return questionsStore.questionsMap[config.CURRENT_MEETING_ID][sessionId]
     })
 
     const nextSessionId = computed(() => {
