@@ -7,8 +7,8 @@
         <h5>Vota da smartphone la parola che rappresenta al meglio questa sessione​</h5>
       </header>
 
-      <div v-if="!hasVoted">
-        <div v-if="questionData" class="col-12 col-lg-10">
+      <div v-if="!hasVoted" class="col-12 col-lg-10 pb-5 pb-lg-0">
+        <div v-if="questionData" class="row justify-content-center row-cols-2 row-cols-lg-auto g-lg-4 g-3 row-gap-4 pb-5 pb-lg-0">
           <!-- <h2>{{ questionData.questionText }}</h2>
         Passiamo a SessionForm i 10 termini recuperati -->
           <SessionForm :sessionId="sessionId" :terms="questionData.questionAnswers" @voted="handleVoted" />
@@ -16,7 +16,6 @@
         <div v-else>
           <p>Caricamento in corso...</p>
         </div>
-
       </div>
       <div v-else>
         <h1 class="text-secondary text-center fw-bold mb-5">Hai già votato​</h1>
