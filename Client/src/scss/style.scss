@@ -67,6 +67,9 @@ $secondary:#8CC63F;
         background-image: url(/src/images/main-bg.webp);
     }
 }
+.min-dvh-100 {
+    min-height: 100dvh;
+}
 .secondary-bg {
     background-image: url(/src/images/secondary-bg-m.webp);
     @include media-breakpoint-up(lg) { 
