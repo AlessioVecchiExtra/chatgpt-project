@@ -6,7 +6,7 @@
           }"
           :cornersSquareOptions="{ type: 'square', color: '#8CC63F' }"
           :cornersDotOptions="{ type: 'square', color: '#0C1E3B' }"/>
-          <p>bit.ly/CATchUP</p>
+          <!-- <p>bit.ly/CATchUP</p> -->
   </div>
 </template>
 

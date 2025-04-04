@@ -6,10 +6,13 @@
         <img src="../images/title.webp">
       </header>
       <h5 class="text-center mb-4">Seleziona una sessione per iniziare.</h5>
-      <div class="col-12 text-center d-flex justify-content-center gap-3">
+      <div v-if="questions" class="col-12 text-center d-flex justify-content-center gap-3">
+        <router-link v-for="question in questions" :to="`/session/${question.id}`" class="btn btn-outline-primary btn-lg border-secondary">Sessione {{ question.id }}<i class="bi bi-arrow-right-short"></i></router-link>
+        <!-- 
         <router-link to="/session/1" class="btn btn-outline-primary btn-lg border-secondary">Sessione 1 <i class="bi bi-arrow-right-short"></i></router-link>
         <router-link to="/session/2" class="btn btn-outline-primary btn-lg border-secondary">Sessione 2 <i class="bi bi-arrow-right-short"></i></router-link>
-        <router-link to="/session/3" class="btn btn-outline-primary btn-lg border-secondary">Sessione 3 <i class="bi bi-arrow-right-short"></i></router-link>
+        <router-link to="/session/3" class="btn btn-outline-primary btn-lg border-secondary">Sessione 3 <i class="bi bi-arrow-right-short"></i></router-link> 
+        -->
       </div>
 
       <div class="my-5"></div>
@@ -19,9 +22,28 @@
         <router-link to="/results?sessionIds=2" class="btn btn-outline-dark btn-lg">Sessione 2 <i class="bi bi-arrow-right-short"></i></router-link>
         <router-link to="/results?sessionIds=1,2" class="btn btn-outline-dark btn-lg">Sessione 1 + 2 <i class="bi bi-arrow-right-short"></i></router-link>
         <router-link to="/results?sessionIds=3" class="btn btn-outline-dark btn-lg">Sessione 3 <i class="bi bi-arrow-right-short"></i></router-link>        
-        <router-link to="/results/sessionIds=1,2,3" class="btn btn-outline-dark btn-lg">Tutte le sessioni <i class="bi bi-arrow-right-short"></i></router-link>
+        <router-link to="/results?sessionIds=1,2,3" class="btn btn-outline-dark btn-lg">Tutte le sessioni <i class="bi bi-arrow-right-short"></i></router-link>
       </div>
 
     </div>
   </div>
 </template>
+
+<script>
+import { defineComponent, onMounted, computed, ref, watch } from 'vue'
+import { useQuestionsStore  } from '@/store/questions'
+export default defineComponent({
+  name: 'HomeView',
+  setup() {
+    const questionStore = useQuestionsStore();
+    const questions = ref([]);
+    onMounted(async () => {
+      questions.value = await questionStore.loadQuestions();
+    });  
+    return {
+      questions
+    }  
+  }
+});
+
+</script>
