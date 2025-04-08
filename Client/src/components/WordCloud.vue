@@ -92,10 +92,13 @@ export default defineComponent({
         backgroundColor: props.backgroundColor,
         //maxSize: props.maxFontSize,
         //minSize: props.minFontSize,
-        rotateRatio: 0.25,
-        rotationSteps: 4,
+        rotateRatio: 0,
+        //rotateRatio: 0.25,
+        //rotationSteps: 4,
         width: width.value,
-        height: height.value
+        height: height.value,
+        shape:"circle", // "square" | ""
+        ellipticity: 0.5
       })
     }
 
