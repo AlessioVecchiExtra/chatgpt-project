@@ -53,7 +53,7 @@ export default defineComponent({
 */
     // Carichiamo tutti i voti dal backend all'avvio
     onMounted(() => {
-      sessionsStore.loadAllVotesFromApi()
+      sessionsStore.loadVotes()
     })
 
     /**

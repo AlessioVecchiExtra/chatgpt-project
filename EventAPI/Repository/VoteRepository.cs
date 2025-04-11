@@ -29,5 +29,11 @@ namespace EventAPI.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task Clear(int sessionId)
+        {
+            var toRemove = _context.Votes.Where(x => x.QuestionId == sessionId);
+            _context.Votes.RemoveRange(toRemove);
+            await _context.SaveChangesAsync();
+        }
     }
 }

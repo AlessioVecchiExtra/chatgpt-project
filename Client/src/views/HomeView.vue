@@ -25,6 +25,14 @@
         <router-link to="/results?sessionIds=1,2,3" class="btn btn-outline-dark btn-lg">Tutte le sessioni <i class="bi bi-arrow-right-short"></i></router-link>
       </div>
 
+      <div class="my-5"></div>
+      <h5 class="text-center mb-4">Reset Sessione</h5>
+      <div class="col-12 text-center d-flex justify-content-center gap-3">
+        
+        <div v-if="questions" class="col-12 text-center d-flex justify-content-center gap-3">
+            <button v-for="question in questions" @click="resetSession(question.id)" class="btn btn-outline-danger btn-lg border-secondary">Reset {{ question.id }}<i class="bi bi-arrow-right-short"></i></button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -32,16 +40,27 @@
 <script>
 import { defineComponent, onMounted, computed, ref, watch } from 'vue'
 import { useQuestionsStore  } from '@/store/questions'
+import { useSessionsStore  } from '@/store/sessions'
+
 export default defineComponent({
   name: 'HomeView',
   setup() {
     const questionStore = useQuestionsStore();
+    const useSessionStore = useSessionsStore();
+
     const questions = ref([]);
     onMounted(async () => {
       questions.value = await questionStore.loadQuestions();
     });  
+
+    const resetSession = async function(questionId){
+      if(confirm(`sei sicuro di cancellare tutte le risposte della sessione ${questionId}?`)){      
+        await useSessionStore.clearVotes(questionId);
+      }
+    }
     return {
-      questions
+      questions,
+      resetSession
     }  
   }
 });

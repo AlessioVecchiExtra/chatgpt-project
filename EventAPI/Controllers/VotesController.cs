@@ -22,11 +22,11 @@ namespace MyEventApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostVote([FromBody] VoteDto voteDto)
         {
-            if (voteDto == null || (voteDto.QuestionAnswerId == null && string.IsNullOrWhiteSpace(voteDto.QuestionAnswerText)))                
+            if (voteDto == null || (voteDto.QuestionAnswerId == null && string.IsNullOrWhiteSpace(voteDto.QuestionAnswerText)))
             {
                 return BadRequest("Vote or word is invalid.");
             }
-            
+
             await _repository.Add(_mapper.Map<Vote>(voteDto));
             return Ok();
         }
@@ -48,5 +48,14 @@ namespace MyEventApi.Controllers
             var votes = _mapper.Map<List<VoteDto?>>(await _repository.GetVotesByQuestionId(questionId));
             return Ok(votes);
         }
+
+        // POST: api/votes/clear/1
+        [HttpPost("clear/{questionId:int}")]
+        public async Task<ActionResult> Clear(int questionId)
+        {
+            await _repository.Clear(questionId);            
+            return Ok();
+        }
+
     }
 }

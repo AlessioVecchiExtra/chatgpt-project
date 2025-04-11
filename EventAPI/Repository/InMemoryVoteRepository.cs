@@ -12,8 +12,15 @@ namespace EventAPI.Repositories
             return Task.CompletedTask;
         }
 
+        public async Task Clear(int sessionId)
+        {
+            _votes.Where(x => x.QuestionId == sessionId)
+                .ToList()
+                .ForEach(x => _votes.Remove(x));
+        }
+
         public Task<List<Vote>> GetAll(int meetingId)
-        {            
+        {
             return Task.FromResult(_votes.ToList());
         }
 

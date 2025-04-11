@@ -7,5 +7,6 @@ namespace EventAPI.Repositories
         Task Add(Vote vote);
         Task<List<Vote>> GetAll(int meetingId);        
         Task<List<Vote>> GetVotesByQuestionId(int sessionId);
+        Task Clear(int sessionId);
     }
 }
